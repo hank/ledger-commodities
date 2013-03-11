@@ -2,7 +2,7 @@ ledger-commodities
 ==================
 A Python script for generating price databases for various commodities (bitcoin, litecoin, ppcoin, gold, silver, etc.)
 
-## Current support:
+## Current support
 * BTC (bitcoincharts - Mt. Gox close prices)
 * LTC (http://www.cryptocoincharts.info/)
 * PPC (http://www.cryptocoincharts.info/)
@@ -10,3 +10,9 @@ A Python script for generating price databases for various commodities (bitcoin,
 * Silver
 
 More to come on request, or fork and send me a pull req!
+
+## Dependencies
+Python BeautifulSoup 4.x
+
+## Running
+python commondities.py
