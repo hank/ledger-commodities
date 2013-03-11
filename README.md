@@ -1,5 +1,9 @@
 ledger-commodities
 ==================
+| Donate to support this free software |
+|:------------------------------------:|
+| [1ErikgLXAmxuTk76tdCrRW3iLnX1GS8mFd](bitcoin:1ErikgLXAmxuTk76tdCrRW3iLnX1GS8mFd) |
+
 A Python script for generating price databases for various commodities (bitcoin, litecoin, ppcoin, gold, silver, etc.)
 
 ## Current support
