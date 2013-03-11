@@ -1,6 +1,6 @@
 ledger-commodities
 ==================
-| Donate to support this free software |
+| Donate with Bitcoin to support this free software |
 |:------------------------------------:|
 | [1ErikgLXAmxuTk76tdCrRW3iLnX1GS8mFd](bitcoin:1ErikgLXAmxuTk76tdCrRW3iLnX1GS8mFd) |
 
