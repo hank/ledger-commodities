@@ -9,16 +9,17 @@ output = subprocess.check_output(['ledger', '-f', sys.argv[1], 'bal', '--lots'])
 # Find the break
 output = output.split("--------------------")[1]
 # Remove the excess
-lots = {}
+lots = []
 for line in output.split('\n'):
         match = re.search("(\w+)\s+\{(.+)\} \[(.+)\]", line)
         if match:
+                print line
                 # This line counts
                 # Figure out the commodity
-                lots[match.group(3)] = [line, match.group(1)]
+                lots.append([match.group(3), match.group(1), line])
 
-for key in sorted(lots.iterkeys()):
-        print lots[key][0]
+for i in sorted(lots):
+        print i[2]
 
 # If we were given an amount, find the amounts from the lots that comprise the transaction
 if len(sys.argv) > 2:
@@ -30,21 +31,21 @@ if len(sys.argv) > 2:
         print ":: Lot use for %s:" % sys.argv[2]
         total = Decimal(0)
         target = Decimal(parts[0])
-        for key in sorted(lots.iterkeys()):
-                fields = lots[key][0].split(" ")
+        for i in sorted(lots):
+                fields = i[2].split(" ")
                 # ensure it's the right commodity
-                if lots[key][1] != parts[1]:
+                if i[1] != parts[1]:
                         continue
                 n = Decimal(fields[0])
                 if total + n <= target:
                         # add it
                         total += n
-                        print "\t" + lots[key][0]
+                        print "\t" + i[2]
                 elif total + n > target:
                         diff = target - total
                         fields[0] = diff
-                        lots[key][0] = " ".join([str(i) for i in fields])
-                        print "\t" + lots[key][0]
+                        i[2] = " ".join([str(k) for k in fields])
+                        print "\t" + i[2]
                         total += diff
                         break
 
@@ -53,3 +54,4 @@ if len(sys.argv) > 2:
                 print "Success!"
         else:
                 print "Failed to fund transaction (" + target + " != " + total + ")"
+
