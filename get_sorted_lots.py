@@ -13,7 +13,6 @@ lots = []
 for line in output.split('\n'):
         match = re.search("(\w+)\s+\{(.+)\} \[(.+)\]", line)
         if match:
-                print line
                 # This line counts
                 # Figure out the commodity
                 lots.append([match.group(3), match.group(1), line])
